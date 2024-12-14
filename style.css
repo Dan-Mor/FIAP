@@ -1,0 +1,96 @@
+body {
+    background-image: url('imagens/fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Arial', sans-serif;
+}
+header {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.container {
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 20px;
+    background-image: url('imagens/fundo2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.list-group-item2 {
+    background-color: rgba(85, 255, 99, 0.8);
+    border: none;
+    border-radius: 5px; 
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.list-group-item {
+    background-color: rgba(241, 241, 241, 0.8);
+    border: none; 
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s; 
+}
+
+.list-group-item:hover {
+    background-color: rgba(226, 230, 234, 0.8);
+}
+
+.btn {
+    font-weight: bold; 
+}
+
+.btn-success {
+    background-color: #28a745; 
+    border-color: #28a745; 
+}
+
+.btn-success:hover {
+    background-color: #218838; 
+}
+
+.btn-primary {
+    background-color: #007bff; 
+    border-color: #007bff; 
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545; 
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; 
+}
+
+h2 {
+    color: #343a40;
+    font-size: 1.75rem; 
+}
+
+.text-center {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.8rem; 
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}

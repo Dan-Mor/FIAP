@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTechZinha</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bg-primary text-white text-center py-4">
+    <h1>FinTech de Investimento / Banco Jovem</h1>
+</header>
+
+<div class="container mt-5">
+    <div class="text-center mb-4 list-group-item2">
+        <h2>Carteira: <span id="carteiraPrincipal">R$3000</span></h2>
+    </div>
+
+    <h2 class="mb-4 list-group-item2">Opções de investimento</h2>
+    <div class="list-group mb-4">
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            Ações: <span class="acao-carteira">R$0</span>
+            <button class="btn btn-success invest-btn" data-option="acao">Investir R$100</button>
+        </div>
+
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            Bens Móveis: <span class="moveis-carteira">R$0</span>
+            <button class="btn btn-success invest-btn" data-option="moveis">Investir R$100</button>
+        </div>
+
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            Propriedades: <span class="propriedade-carteira">R$0</span>
+            <button class="btn btn-success invest-btn" data-option="propriedade">Investir R$100</button>
+        </div>
+
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            Crypto: <span class="crypto-carteira">R$0</span>
+            <button class="btn btn-success invest-btn" data-option="crypto">Investir R$100</button>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary mr-2" id="deposit-btn">Depositar R$100</button>
+        <button class="btn btn-danger" id="withdraw-btn">Pagar R$100</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    let carteiraPrincipal = 5000;
+    let acaoBalance = 0;
+    let moveisBalance = 0;
+    let propriedadeBalance = 0;
+    let cryptoBalance = 0;
+
+    function atualizaCarteiraPrincipal() {
+        document.getElementById('carteiraPrincipal').innerText = `R$${carteiraPrincipal}`;
+    }
+
+    function atualizaInvestimento(option) {
+        let carteira;
+        switch (option) {
+            case 'acao':
+                carteira = acaoBalance;
+                break;
+            case 'moveis':
+                carteira = moveisBalance;
+                break;
+            case 'propriedade':
+                carteira = propriedadeBalance;
+                break;
+            case 'crypto':
+                carteira = cryptoBalance;
+                break;
+        }
+        document.querySelector(`.${option}-carteira`).innerText = `R$${carteira}`;
+    }
+
+    const investButtons = document.getElementsByClassName('invest-btn');
+    for (let i = 0; i < investButtons.length; i++) {
+        investButtons[i].addEventListener('click', function() {
+            const option = this.getAttribute('data-option');
+            if (carteiraPrincipal >= 100) {
+                carteiraPrincipal -= 100;
+                switch (option) {
+                    case 'acao':
+                        acaoBalance += 100;
+                        break;
+                    case 'moveis':
+                        moveisBalance += 100;
+                        break;
+                    case 'propriedade':
+                        propriedadeBalance += 100;
+                        break;
+                    case 'crypto':
+                        cryptoBalance += 100;
+                        break;
+                }
+                atualizaCarteiraPrincipal();
+                atualizaInvestimento(option);
+            } else {
+                alert("Sem dindin pra investir.");
+            }
+        });
+    }
+
+    document.getElementById('deposit-btn').addEventListener('click', function() {
+        carteiraPrincipal += 100;
+        if (carteiraPrincipal >= 1000000) {
+            alert("WOW... virou milionário... valeu a pena clicar tanto nesse botão?");
+            atualizaCarteiraPrincipal();
+        } else {
+        atualizaCarteiraPrincipal();
+        }
+    });
+
+    document.getElementById('withdraw-btn').addEventListener('click', function() {
+        if (carteiraPrincipal >= 100) {
+            carteiraPrincipal -= 100; 
+            atualizaCarteiraPrincipal();
+        } else {
+            alert("Ta tirando o dinheiro todo pq?");
+        }
+    });
+</script>
+</body>
+</html>
